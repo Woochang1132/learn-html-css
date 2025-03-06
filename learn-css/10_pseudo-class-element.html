@@ -39,6 +39,40 @@
       li:not(.target) {
         font-size: 30px;
       }
+
+      /* 가상 요소 */
+      .required::after {
+        content: '*';
+        margin-right: 2px;
+        color: red;
+        font-size: 18px;
+      }
+      [data-tooltip] {
+        position: relative;
+      }
+
+      [data-tooltip]:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: 0px;
+        left: 56px;
+        background-color: black;
+        color: white;
+        width: 210px;
+      }
+      .letter::first-letter {
+        font-size: 60px;
+        color: blue;
+      }
+      .line::first-line {
+        background-color: yellow;
+        color: blue;
+        font-size: 20px;
+      }
+      p::selection {
+        background-color: red;
+        color: white;
+      }
     </style>
   </head>
   <body>
@@ -52,14 +86,14 @@
     <fieldset>
       <legend>focus, before, after</legend>
       <div class="field">
-        <label for="name">이름</label>
+        <label for="name" class="required">이름</label>
         <input type="text" id="name" />
       </div>
       <div class="field">
-        <label for="age">나이</label>
+        <label for="age" class="required">나이</label>
         <input type="text" id="age" />
       </div>
-      <button>보내기</button>
+      <button data-tooltip="이 버튼을 클릭하여 정보를 보내세요!">보내기</button>
     </fieldset>
     <fieldset>
       <legend>nth-child, not</legend>
@@ -70,6 +104,29 @@
         <li>4content</li>
         <li>5content</li>
       </ul>
+    </fieldset>
+
+    <fieldset>
+      <legend>first-letter, first-line, section</legend>
+      <div>
+        <p class="letter">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint
+          incidunt modi dolorem molestias, dignissimos harum. Quibusdam,
+          aspernatur nobis. Animi unde, ullam mollitia totam atque ducimus optio
+          voluptas cupiditate odit! Perspiciatis, excepturi vero porro ex
+          exercitationem illo inventore nisi reprehenderit? Dignissimos
+          deserunt, vitae vero blanditiis iure ad id ex sed pariatur
+          consequatur, placeat non quidem saepe, laboriosam eum odio ut.
+        </p>
+        <p class="line">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+          animi dolorem natus itaque illum error exercitationem iste consectetur
+          labore! Ut sed, nisi porro ex ad cum distinctio tempore eveniet illo?
+          Velit, illum natus, fuga placeat nostrum iure quam explicabo officia
+          culpa quidem eius ad! Sequi officia, enim deserunt rerum laborum iste
+          nihil architecto voluptas qui ullam quidem tenetur porro eligendi?
+        </p>
+      </div>
     </fieldset>
   </body>
 </html>
